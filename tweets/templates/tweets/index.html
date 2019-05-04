@@ -1,20 +1,28 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>MLH Localhost Tweets</title>
+
+        <link href="{% static 'tweets/css/index.css' %}" rel="stylesheet">
     </head>
     <body>
-        <h1>Tweets</h1>
+        <h1 class="page_title">MLH Localhost Tweets</h1>
         <ul id="tweet_list">
             {% for tweet in tweets %}
             <li>
                 <div class="tweet">
-                    <img class="tweet__profile_image" src="{{ tweet.user.profile_image_url }}">
-                    <p class="tweet__username">{{ tweet.user.name }}</p>
-                    <p class="tweet__screenname">@{{ tweet.user.screen_name }}</p>
-                    <p class="tweet__text">{{ tweet.text }}</p>
+                    <div class="tweet__profile_image_container">
+                        <img width="48px" height="48px" class="tweet__profile_image" src="{{ tweet.user.profile_image_url }}">
+                    </div>
+                    <div class="tweet__content_container">
+                        <span class="text__gray">{{ tweet.user.name }}</span>
+                        <span class="text__gray">@{{ tweet.user.screen_name }}</span>
+                        <p class="text__bold text__20">{{ tweet.text }}</p>
+                    </div>
                 </div>
             </li>
             {% endfor %}
