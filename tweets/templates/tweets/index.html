@@ -7,6 +7,17 @@
     </head>
     <body>
         <h1>Tweets</h1>
-        <p>{{ tweets }}</p>
+        <ul id="tweet_list">
+            {% for tweet in tweets %}
+            <li>
+                <div class="tweet">
+                    <img class="tweet__profile_image" src="{{ tweet.user.profile_image_url }}">
+                    <p class="tweet__username">{{ tweet.user.name }}</p>
+                    <p class="tweet__screenname">@{{ tweet.user.screen_name }}</p>
+                    <p class="tweet__text">{{ tweet.text }}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
     </body>
 </html>
